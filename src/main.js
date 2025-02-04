@@ -102,22 +102,17 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-let randomPosterImage = document.querySelector("article.poster img.poster-img")
-let randomPosterTitle = document.querySelector("article.poster h1.poster-title")
-let randomPosterQuote = document.querySelector("article.poster h3.poster-quote")
+let mainPosterImage = document.querySelector("article.poster img.poster-img")
+let mainPosterTitle = document.querySelector("article.poster h1.poster-title")
+let mainPosterQuote = document.querySelector("article.poster h3.poster-quote")
 
-let randomImageIndex = getRandomIndex(images)
-let randomTitleIndex = getRandomIndex(titles)
-let randomQuoteIndex = getRandomIndex(quotes)
+updateMainPoster()
 
-let randomizedPoster = createPoster(images[randomImageIndex], titles[randomTitleIndex], quotes[randomQuoteIndex])
-
-randomPosterImage.src = randomizedPoster.imageURL
-randomPosterTitle.textContent = randomizedPoster.title
-randomPosterQuote.textContent = randomizedPoster.quote
+let updateButton = document.querySelector("button.show-random")
 
 // event listeners go here 👇
 
+updateButton.addEventListener('click', updateMainPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -131,5 +126,22 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function createRandomPoster() {
+  let randomImageIndex = getRandomIndex(images)
+  let randomTitleIndex = getRandomIndex(titles)
+  let randomQuoteIndex = getRandomIndex(quotes)
+
+  let randomizedPoster = createPoster(images[randomImageIndex], titles[randomTitleIndex], quotes[randomQuoteIndex])
+  return randomizedPoster
+}
+
+function updateMainPoster() {
+  let randomPoster = createRandomPoster()
+
+  mainPosterImage.src = randomPoster.imageURL
+  mainPosterTitle.textContent = randomPoster.title
+  mainPosterQuote.textContent = randomPoster.quote
 }
 
