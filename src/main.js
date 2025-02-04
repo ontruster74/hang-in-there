@@ -106,12 +106,23 @@ let mainPosterImage = document.querySelector("article.poster img.poster-img")
 let mainPosterTitle = document.querySelector("article.poster h1.poster-title")
 let mainPosterQuote = document.querySelector("article.poster h3.poster-quote")
 
-updateMainPoster()
+let mainSection = document.querySelector("section.main-poster")
+let formSection = document.querySelector("section.poster-form")
+let savedSection = document.querySelector("section.saved-posters")
 
+let showSavedButton = document.querySelector("button.show-saved")
+let showFormButton = document.querySelector("button.show-form")
+let showMainButton = document.querySelector("button.show-main")
+let backToMainButton = document.querySelector("button.back-to-main")
 let updateButton = document.querySelector("button.show-random")
+
 
 // event listeners go here 👇
 
+showSavedButton.addEventListener('click', showSaved)
+showFormButton.addEventListener('click', showForm)
+showMainButton.addEventListener('click', showMain)
+backToMainButton.addEventListener('click', backToMain)
 updateButton.addEventListener('click', updateMainPoster)
 
 // functions and event handlers go here 👇
@@ -145,3 +156,22 @@ function updateMainPoster() {
   mainPosterQuote.textContent = randomPoster.quote
 }
 
+function showSaved() {
+  savedSection.removeAttribute('hidden')
+}
+
+function showForm() {
+  formSection.removeAttribute('hidden')
+}
+
+function showMain() {
+  formSection.setAttribute('hidden', 'hidden')
+  mainSection.removeAttribute('hidden')
+}
+
+function backToMain() {
+  savedSection.setAttribute('hidden', 'hidden')
+  mainSection.removeAttribute('hidden')
+}
+
+updateMainPoster()
