@@ -116,9 +116,9 @@ let showMainButton = document.querySelector("button.show-main")
 let backToMainButton = document.querySelector("button.back-to-main")
 let updateButton = document.querySelector("button.show-random")
 
-let formPosterURL = document.getElementById("poster-image-url")
-let formPosterTitle = document.getElementById("poster-title")
-let formPosterQuote = document.getElementById("poster-quote")
+let formPosterURL = document.querySelector("#poster-image-url")
+let formPosterTitle = document.querySelector("#poster-title")
+let formPosterQuote = document.querySelector("#poster-quote")
 let formButton = document.querySelector("button.make-poster")
 // event listeners go here 👇
 
@@ -127,6 +127,7 @@ showFormButton.addEventListener('click', showForm)
 showMainButton.addEventListener('click', showMain)
 backToMainButton.addEventListener('click', backToMain)
 updateButton.addEventListener('click', updateMainPoster)
+
 formButton.addEventListener('click', createFormPoster)
 
 // functions and event handlers go here 👇
@@ -146,11 +147,11 @@ function createPoster(imageURL, title, quote) {
 function createFormPoster(event) {
   event.preventDefault()
 
-  currentPoster = createPoster(formPosterURL, formPosterTitle, formPosterQuote)
+  currentPoster = createPoster(formPosterURL.value, formPosterTitle.value, formPosterQuote.value)
   
-  images.push(formPosterURL)
-  titles.push(formPosterTitle)
-  quotes.push(formPosterQuote)
+  images.push(formPosterURL.value)
+  titles.push(formPosterTitle.value)
+  quotes.push(formPosterQuote.value)
 
   showMain()
 
