@@ -116,7 +116,10 @@ let showMainButton = document.querySelector("button.show-main")
 let backToMainButton = document.querySelector("button.back-to-main")
 let updateButton = document.querySelector("button.show-random")
 
-
+let formPosterURL = document.getElementById("poster-image-url")
+let formPosterTitle = document.getElementById("poster-title")
+let formPosterQuote = document.getElementById("poster-quote")
+let formButton = document.querySelector("button.make-poster")
 // event listeners go here 👇
 
 showSavedButton.addEventListener('click', showSaved)
@@ -124,6 +127,7 @@ showFormButton.addEventListener('click', showForm)
 showMainButton.addEventListener('click', showMain)
 backToMainButton.addEventListener('click', backToMain)
 updateButton.addEventListener('click', updateMainPoster)
+formButton.addEventListener('click', createFormPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -137,6 +141,22 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function createFormPoster(event) {
+  event.preventDefault()
+
+  currentPoster = createPoster(formPosterURL, formPosterTitle, formPosterQuote)
+  
+  images.push(formPosterURL)
+  titles.push(formPosterTitle)
+  quotes.push(formPosterQuote)
+
+  showMain()
+
+  mainPosterImage.src = currentPoster.imageURL
+  mainPosterTitle.textContent = currentPoster.title
+  mainPosterQuote.textContent = currentPoster.quote
 }
 
 function createRandomPoster() {
