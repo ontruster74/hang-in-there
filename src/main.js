@@ -157,21 +157,23 @@ function updateMainPoster() {
 }
 
 function showSaved() {
-  savedSection.removeAttribute('hidden')
+  savedSection.classList.remove('hidden')
+  mainSection.classList.add('hidden')
 }
 
 function showForm() {
-  formSection.removeAttribute('hidden')
+  formSection.classList.remove('hidden')
+  mainSection.classList.add('hidden')
 }
 
 function showMain() {
-  formSection.setAttribute('hidden', 'hidden')
-  mainSection.removeAttribute('hidden')
+  formSection.classList.add('hidden')
+  mainSection.classList.remove('hidden')
 }
 
 function backToMain() {
-  savedSection.setAttribute('hidden', 'hidden')
-  mainSection.removeAttribute('hidden')
+  savedSection.classList.add('hidden')
+  mainSection.classList.remove('hidden')
 }
 
 updateMainPoster()
