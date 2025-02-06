@@ -1,4 +1,25 @@
 // query selector variables go here 👇
+let mainPosterImage = document.querySelector("article.poster img.poster-img")
+let mainPosterTitle = document.querySelector("article.poster h1.poster-title")
+let mainPosterQuote = document.querySelector("article.poster h3.poster-quote")
+
+let mainSection = document.querySelector("section.main-poster")
+let formSection = document.querySelector("section.poster-form")
+let savedSection = document.querySelector("section.saved-posters")
+
+let showSavedButton = document.querySelector("button.show-saved")
+let showFormButton = document.querySelector("button.show-form")
+let showMainButton = document.querySelector("button.show-main")
+let backToMainButton = document.querySelector("button.back-to-main")
+let updateButton = document.querySelector("button.show-random")
+
+let formPosterURL = document.querySelector("#poster-image-url")
+let formPosterTitle = document.querySelector("#poster-title")
+let formPosterQuote = document.querySelector("#poster-quote")
+let formButton = document.querySelector("button.make-poster")
+
+let savePosterButton = document.querySelector("button.save-poster")
+let savedPostersGrid = document.querySelector("div.saved-posters-grid")
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -102,27 +123,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-let mainPosterImage = document.querySelector("article.poster img.poster-img")
-let mainPosterTitle = document.querySelector("article.poster h1.poster-title")
-let mainPosterQuote = document.querySelector("article.poster h3.poster-quote")
 
-let mainSection = document.querySelector("section.main-poster")
-let formSection = document.querySelector("section.poster-form")
-let savedSection = document.querySelector("section.saved-posters")
-
-let showSavedButton = document.querySelector("button.show-saved")
-let showFormButton = document.querySelector("button.show-form")
-let showMainButton = document.querySelector("button.show-main")
-let backToMainButton = document.querySelector("button.back-to-main")
-let updateButton = document.querySelector("button.show-random")
-
-let formPosterURL = document.querySelector("#poster-image-url")
-let formPosterTitle = document.querySelector("#poster-title")
-let formPosterQuote = document.querySelector("#poster-quote")
-let formButton = document.querySelector("button.make-poster")
-
-let savePosterButton = document.querySelector("button.save-poster")
-let savedPostersGrid = document.querySelector("div.saved-posters-grid")
 // event listeners go here 👇
 
 showSavedButton.addEventListener('click', showSaved)
