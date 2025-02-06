@@ -120,15 +120,19 @@ let formPosterURL = document.querySelector("#poster-image-url")
 let formPosterTitle = document.querySelector("#poster-title")
 let formPosterQuote = document.querySelector("#poster-quote")
 let formButton = document.querySelector("button.make-poster")
+
+let savePosterButton = document.querySelector("button.save-poster")
+let savedPostersGrid = document.querySelector("div.saved-posters-grid")
 // event listeners go here 👇
 
 showSavedButton.addEventListener('click', showSaved)
 showFormButton.addEventListener('click', showForm)
 showMainButton.addEventListener('click', showMain)
 backToMainButton.addEventListener('click', backToMain)
-updateButton.addEventListener('click', updateMainPoster)
 
+updateButton.addEventListener('click', updateMainPoster)
 formButton.addEventListener('click', createFormPoster)
+savePosterButton.addEventListener('click', savePoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -175,6 +179,18 @@ function updateMainPoster() {
   mainPosterImage.src = randomPoster.imageURL
   mainPosterTitle.textContent = randomPoster.title
   mainPosterQuote.textContent = randomPoster.quote
+}
+
+function savePoster() {
+  if (!(savedPosters.includes(currentPoster))) {
+    savedPosters.push(currentPoster)
+
+    savedPostersGrid.innerHTML += `<article class="mini-poster">
+      <img class="mini-poster" src="${currentPoster.imageURL}" alt="nothin' to see here">
+      <h2 class="poster-title">${currentPoster.title}</h1>
+      <h4 class="poster-quote">${currentPoster.quote}</h3>
+    </article>`
+  }
 }
 
 function showSaved() {
