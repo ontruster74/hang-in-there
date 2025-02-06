@@ -179,6 +179,8 @@ function updateMainPoster() {
   mainPosterImage.src = randomPoster.imageURL
   mainPosterTitle.textContent = randomPoster.title
   mainPosterQuote.textContent = randomPoster.quote
+
+  currentPoster = randomPoster
 }
 
 function savePoster() {
