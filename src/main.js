@@ -170,8 +170,7 @@ function createRandomPoster() {
   let randomTitleIndex = getRandomIndex(titles)
   let randomQuoteIndex = getRandomIndex(quotes)
 
-  let randomizedPoster = createPoster(images[randomImageIndex], titles[randomTitleIndex], quotes[randomQuoteIndex])
-  return randomizedPoster
+  return createPoster(images[randomImageIndex], titles[randomTitleIndex], quotes[randomQuoteIndex])
 }
 
 function updateMainPoster() {
