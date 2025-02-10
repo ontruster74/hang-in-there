@@ -339,14 +339,27 @@ function updateUnmotivationalGrid() {
 
 function deleteUnmotivationalPoster(event) {
   if (event.target.classList.contains('unmotivational')) {
-    let posterIndex = cleanedUnmotivationalPosters.findIndex((poster) => {poster.imageURL == event.target.src})
-    cleanedUnmotivationalPosters.splice(posterIndex, 1)
+    removeCorrespondingPosterObject(event.target)
     event.target.remove()
+
   } else if (event.target.parentElement.classList.contains('unmotivational')) {
-    let posterIndex = cleanedUnmotivationalPosters.findIndex((poster) => {poster.imageURL == event.target.src})
-    cleanedUnmotivationalPosters.splice(posterIndex, 1)
+
+    removeCorrespondingPosterObject(event.target.parentElement)
     event.target.parentElement.remove()
   }
+}
+
+function deleteCorrespondingPosterObject(element) {
+  let correspondingObjectIndex = null
+
+  for (let i = 0; i < cleanedUnmotivationalPosters.length; i++) {
+    let posterName = cleanedUnmotivationalPosters[i].imageURL.split('/').at(-1)
+    if (posterName == imageName) {
+      correspondingObjectIndex = i
+    }
+  }
+  
+  return correspondingObjectIndex
 }
 
 function showSaved() {
