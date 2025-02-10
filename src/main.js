@@ -338,33 +338,31 @@ function updateUnmotivationalGrid() {
 }
 
 function deleteUnmotivationalPoster(event) {
-  let posterIndex = null
-
   if (event.target.classList.contains('unmotivational')) {
     
-    cleanedUnmotivationalPosters.forEach((poster) => {
-      for (let key in poster) {
-        if (poster[key] == event.target.children[1].innerText) {
-          posterIndex = cleanedUnmotivationalPosters.indexOf(poster)
-        }
-      }
-    })
-
-    cleanedUnmotivationalPosters.splice(posterIndex, 1)
+    removePosterFromCleanedData(event.target.children[1])
     event.target.classList.add('hidden')
+
   } else if (event.target.parentElement.classList.contains('unmotivational')) {
 
-    cleanedUnmotivationalPosters.forEach((poster) => {
-      for (let key in poster) {
-        if (poster[key] == event.target.innerText) {
-          posterIndex = cleanedUnmotivationalPosters.indexOf(poster)
-        }
-      }
-    })
-
-    cleanedUnmotivationalPosters.splice(posterIndex, 1)
+    removePosterFromCleanedData(event.target)
     event.target.parentElement.classList.add('hidden')
+
   }
+}
+
+function removePosterFromCleanedData(element) {
+  let posterIndex = null
+
+  cleanedUnmotivationalPosters.forEach((poster) => {
+    for (let key in poster) {
+      if (poster[key] == element.innerText) {
+        posterIndex = cleanedUnmotivationalPosters.indexOf(poster)
+      }
+    }
+  })
+  
+  cleanedUnmotivationalPosters.splice(posterIndex, 1)
 }
 
 function showSaved() {
