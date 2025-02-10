@@ -338,28 +338,33 @@ function updateUnmotivationalGrid() {
 }
 
 function deleteUnmotivationalPoster(event) {
-  if (event.target.classList.contains('unmotivational')) {
-    removeCorrespondingPosterObject(event.target)
-    event.target.remove()
+  let posterIndex = null
 
+  if (event.target.classList.contains('unmotivational')) {
+    
+    cleanedUnmotivationalPosters.forEach((poster) => {
+      for (let key in poster) {
+        if (poster[key] == event.target.children[1].innerText) {
+          posterIndex = cleanedUnmotivationalPosters.indexOf(poster)
+        }
+      }
+    })
+
+    cleanedUnmotivationalPosters.splice(posterIndex, 1)
+    event.target.classList.add('hidden')
   } else if (event.target.parentElement.classList.contains('unmotivational')) {
 
-    removeCorrespondingPosterObject(event.target.parentElement)
-    event.target.parentElement.remove()
-  }
-}
+    cleanedUnmotivationalPosters.forEach((poster) => {
+      for (let key in poster) {
+        if (poster[key] == event.target.innerText) {
+          posterIndex = cleanedUnmotivationalPosters.indexOf(poster)
+        }
+      }
+    })
 
-function deleteCorrespondingPosterObject(element) {
-  let correspondingObjectIndex = null
-
-  for (let i = 0; i < cleanedUnmotivationalPosters.length; i++) {
-    let posterName = cleanedUnmotivationalPosters[i].imageURL.split('/').at(-1)
-    if (posterName == imageName) {
-      correspondingObjectIndex = i
-    }
+    cleanedUnmotivationalPosters.splice(posterIndex, 1)
+    event.target.parentElement.classList.add('hidden')
   }
-  
-  return correspondingObjectIndex
 }
 
 function showSaved() {
