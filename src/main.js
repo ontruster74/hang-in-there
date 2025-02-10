@@ -15,8 +15,8 @@ let unmotivationalButton = document.querySelector("button.unmotivational-btn")
 let showMainButton = document.querySelector("button.show-main")
 let backToMainButton = document.querySelector("button.back-to-main")
 let returnToMainButton = document.querySelector("button.return-to-main")
-
 let updateButton = document.querySelector("button.show-random")
+
 let unmotivationalGrid = document.querySelector("div.unmotivational-posters-grid")
 
 let formPosterURL = document.querySelector("#poster-image-url")
@@ -253,7 +253,6 @@ let cleanedUnmotivationalPosters = cleanData();
 var savedPosters = [];
 var currentPoster;
 
-
 // event listeners go here 👇
 
 showSavedButton.addEventListener('click', showSaved)
@@ -266,6 +265,7 @@ unmotivationalButton.addEventListener('click', showUnmotivational)
 updateButton.addEventListener('click', updateMainPoster)
 formButton.addEventListener('click', createFormPoster)
 savePosterButton.addEventListener('click', savePoster)
+unmotivationalSection.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -329,12 +329,24 @@ function savePoster() {
 
 function updateUnmotivationalGrid() {
   cleanedUnmotivationalPosters.forEach((poster) => {
-    unmotivationalGrid.innerHTML += `<article class="mini-poster">
+    unmotivationalGrid.innerHTML += `<article class="mini-poster unmotivational">
       <img class="mini-poster" src="${poster.imageURL}" alt="nothin' to see here">
       <h2 class="poster-title">${poster.title}</h1>
       <h4 class="poster-quote">${poster.quote}</h3>
     </article>`
   })
+}
+
+function deleteUnmotivationalPoster(event) {
+  if (event.target.classList.contains('unmotivational')) {
+    let posterIndex = cleanedUnmotivationalPosters.findIndex((poster) => {poster.imageURL == event.target.src})
+    cleanedUnmotivationalPosters.splice(posterIndex, 1)
+    event.target.remove()
+  } else if (event.target.parentElement.classList.contains('unmotivational')) {
+    let posterIndex = cleanedUnmotivationalPosters.findIndex((poster) => {poster.imageURL == event.target.src})
+    cleanedUnmotivationalPosters.splice(posterIndex, 1)
+    event.target.parentElement.remove()
+  }
 }
 
 function showSaved() {
