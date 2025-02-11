@@ -153,8 +153,7 @@ button:hover {
 .unmotivational-posters-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 10px;
-  padding: 20px;
+  justify-content: center;
 }
 
 .unmotivational-mini-poster {
@@ -162,6 +161,7 @@ button:hover {
   color: white;
   height: 340px;
   padding: 15px;
+  margin: .5em;
   width: 425px;
   border: solid;
   border-radius: 15px;
@@ -183,6 +183,7 @@ button:hover {
   font-size: 30px;
   font-weight: normal;
   letter-spacing: 5px;
+  margin-top: 15px;
   margin-bottom: 10px;
   text-transform: uppercase;
   line-height: 1;

@@ -316,7 +316,21 @@ function updateMainPoster() {
 }
 
 function savePoster() {
-  if (!(savedPosters.includes(currentPoster))) {
+  let duplicatePoster = false
+  let posterContent = {
+    imageURL: currentPoster.imageURL,
+    quote: currentPoster.quote,
+    title: currentPoster.title
+  }
+
+  for (let i = 0; i < savedPosters.length; i++) {
+    if(savePoster[i].includes(posterContent)) {
+      duplicatePoster = true
+      break
+    }
+  }
+
+  if (!duplicatePoster) {
     savedPosters.push(currentPoster)
 
     savedPostersGrid.innerHTML += `<article class="mini-poster">
