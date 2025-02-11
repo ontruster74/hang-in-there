@@ -150,19 +150,18 @@ button:hover {
   padding: 40px;
 }
 
-
 .unmotivational-posters-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 10px;
+  padding: 20px;
 }
 
 .unmotivational-mini-poster {
   background: rgb(134, 134, 134);
   color: white;
   height: 340px;
-  padding: 25px;
+  padding: 15px;
   width: 425px;
   border: solid;
   border-radius: 15px;
