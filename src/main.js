@@ -329,10 +329,10 @@ function savePoster() {
 
 function updateUnmotivationalGrid() {
   cleanedUnmotivationalPosters.forEach((poster) => {
-    unmotivationalGrid.innerHTML += `<article class="mini-poster unmotivational">
-      <img class="mini-poster" src="${poster.imageURL}" alt="nothin' to see here">
-      <h2 class="poster-title">${poster.title}</h1>
-      <h4 class="poster-quote">${poster.quote}</h3>
+    unmotivationalGrid.innerHTML += `<article class="unmotivational-mini-poster unmotivational">
+      <img class="unmotivational-poster-img" src="${poster.imageURL}" alt="nothin' to see here">
+      <h2 class="unmotivational-poster-title">${poster.title}</h1>
+      <h4 class="unmotivational-poster-quote">${poster.quote}</h3>
     </article>`
   })
 }
