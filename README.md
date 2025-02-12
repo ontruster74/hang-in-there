@@ -16,6 +16,8 @@ Step 3: Navigate into the /hang-in-there-project-m2 directory and run 'open inde
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
 
+![Capture](https://github.com/user-attachments/assets/2cf07fe6-969a-4766-b620-3174190bd677)
+
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
 I worked on this project over the past ten days as part of my homework for Module 2 of the Turing program. It is my first project of this module.
