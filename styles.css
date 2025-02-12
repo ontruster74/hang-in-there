@@ -144,3 +144,49 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+/*-- UNMOTIVATIONAL POSTER SECTION --*/
+.unmotivational-posters {
+  padding: 40px;
+}
+
+.unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.unmotivational-mini-poster {
+  background: rgb(134, 134, 134);
+  color: white;
+  height: 340px;
+  padding: 15px;
+  margin: .5em;
+  width: 425px;
+  border: solid;
+  border-radius: 15px;
+}
+
+.unmotivational-mini-poster img {
+  height:200px;
+  width: 300px;
+}
+
+.unmotivational-mini-poster h4,
+.delete {
+  color: white;
+  line-height: 1;
+  width: 90%;
+}
+
+.unmotivational-mini-poster h2 {
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: 5px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  line-height: 1;
+  width: 90%;
+  color: black
+}
