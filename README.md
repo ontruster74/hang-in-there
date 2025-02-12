@@ -8,7 +8,9 @@ This web app is a motivational poster website that displays randomly generated m
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
 Step 1: Fork this repo.
+
 Step 2: Clone it down to your computer into the folder of your choice.
+
 Step 3: Navigate into the /hang-in-there-project-m2 directory and run 'open index.html' (Mac/Linux) or 'explorer.exe index.html' (Windows) to open the web app.
 
 ### Preview of App:
@@ -21,7 +23,9 @@ I worked on this project over the past ten days as part of my homework for Modul
 ### Contributors:
 [//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
 I, Rig Freyr, am the only person who worked on this application.
-GitHub Link:
+
+GitHub Link: https://github.com/ontruster74
+
 LinkedIn Link: https://www.linkedin.com/in/rigfreyr
 
 ### Learning Goals:
@@ -31,6 +35,9 @@ My learning goals for this project included learning how to create, structure, a
 ### Wins + Challenges:
 [//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
 Win No. 1: I successfully completed all iterations of the project without any bugs.
+
 Win No. 2: I got a lot of help and advice from my classmates and instructors throughout the project; they made me feel very comfortable and supported in my work effort.
+
 Challenge No. 1: Iteration 5 gave me a lot of trouble, as I kept second-guessing how I was supposed to complete it. I overcame this by asking my instructors for advice.
+
 Challenge No. 2: It was difficult to intuit many details of working with the DOM in JavaScript. I overcame this difficulty by extensive use of the MDN online doucmentation.
