@@ -1,34 +1,29 @@
-// query selector variables go here 👇
+let mainSection = document.querySelector("section.main-poster")
 let mainPosterImage = document.querySelector("article.poster img.poster-img")
 let mainPosterTitle = document.querySelector("article.poster h1.poster-title")
 let mainPosterQuote = document.querySelector("article.poster h3.poster-quote")
-
-let mainSection = document.querySelector("section.main-poster")
-let formSection = document.querySelector("section.poster-form")
-let savedSection = document.querySelector("section.saved-posters")
-let unmotivationalSection = document.querySelector("section.unmotivational-posters")
-
+let savePosterButton = document.querySelector("button.save-poster")
+let updateButton = document.querySelector("button.show-random")
 let showSavedButton = document.querySelector("button.show-saved")
 let showFormButton = document.querySelector("button.show-form")
 let unmotivationalButton = document.querySelector("button.unmotivational-btn")
 
-let showMainButton = document.querySelector("button.show-main")
-let backToMainButton = document.querySelector("button.back-to-main")
-let returnToMainButton = document.querySelector("button.return-to-main")
-let updateButton = document.querySelector("button.show-random")
-
+let unmotivationalSection = document.querySelector("section.unmotivational-posters")
 let unmotivationalGrid = document.querySelector("div.unmotivational-posters-grid")
+let returnToMainButton = document.querySelector("button.return-to-main")
 
+let formSection = document.querySelector("section.poster-form")
 let formPosterURL = document.querySelector("#poster-image-url")
 let formPosterTitle = document.querySelector("#poster-title")
 let formPosterQuote = document.querySelector("#poster-quote")
 let formButton = document.querySelector("button.make-poster")
+let showMainButton = document.querySelector("button.show-main")
 
-let savePosterButton = document.querySelector("button.save-poster")
+let savedSection = document.querySelector("section.saved-posters")
 let savedPostersGrid = document.querySelector("div.saved-posters-grid")
+let backToMainButton = document.querySelector("button.back-to-main")
 
-// we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -248,27 +243,31 @@ let unmotivationalPosters = [
     img_url: "./assets/doubt.jpg",
   }
 ];
-let cleanedUnmotivationalPosters = cleanData();
 
+let cleanedUnmotivationalPosters = cleanData();
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
 
-showSavedButton.addEventListener('click', showSaved)
-showFormButton.addEventListener('click', showForm)
-showMainButton.addEventListener('click', showMain)
-backToMainButton.addEventListener('click', backToMain)
-returnToMainButton.addEventListener('click', returnToMain)
-unmotivationalButton.addEventListener('click', showUnmotivational)
+showSavedButton.addEventListener('click', (event) => {changeSections(mainSection, savedSection)})
+showFormButton.addEventListener('click', (event) => {changeSections(mainSection, formSection)})
+unmotivationalButton.addEventListener('click', (event) => {changeSections(mainSection, unmotivationalSection)})
+
+showMainButton.addEventListener('click', (event) => {changeSections(formSection, mainSection)})
+backToMainButton.addEventListener('click', (event) => {changeSections(savedSection, mainSection)})
+returnToMainButton.addEventListener('click', (event) => {changeSections(unmotivationalSection, mainSection)})
 
 updateButton.addEventListener('click', updateMainPoster)
 formButton.addEventListener('click', createFormPoster)
 savePosterButton.addEventListener('click', savePoster)
 unmotivationalSection.addEventListener('dblclick', deleteUnmotivationalPoster)
 
-// functions and event handlers go here 👇
-// (we've provided two to get you started)!
+
+function changeSections(sectionOne, sectionTwo) {
+  sectionOne.classList.add('hidden')
+  sectionTwo.classList.remove('hidden')
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -281,16 +280,24 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
+function cleanData() {
+  let cleanedPosters = []
+  unmotivationalPosters.forEach((poster) => {
+    cleanedPosters.push(createPoster(poster.img_url, poster.name, poster.description));
+  })
+  return cleanedPosters
+}
+
 function createFormPoster(event) {
   event.preventDefault()
 
   currentPoster = createPoster(formPosterURL.value, formPosterTitle.value, formPosterQuote.value)
   
-  images.push(formPosterURL.value)
-  titles.push(formPosterTitle.value)
-  quotes.push(formPosterQuote.value)
-
-  showMain()
+  if (!(images.includes(formPosterURL.value))) {images.push(formPosterURL.value)}
+  if (!(titles.includes(formPosterTitle.value))) {images.push(formPosterTitle.value)}
+  if (!(quotes.includes(formPosterQuote.value))) {images.push(formPosterQuote.value)}
+  
+  changeSections(formSection, mainSection)
 
   mainPosterImage.src = currentPoster.imageURL
   mainPosterTitle.textContent = currentPoster.title
@@ -316,21 +323,16 @@ function updateMainPoster() {
 }
 
 function savePoster() {
-  let duplicatePoster = false
-  let posterContent = {
-    imageURL: currentPoster.imageURL,
-    quote: currentPoster.quote,
-    title: currentPoster.title
-  }
+  let alreadyExists = false
 
   for (let i = 0; i < savedPosters.length; i++) {
-    if(savePoster[i].includes(posterContent)) {
-      duplicatePoster = true
+    if ((savedPosters[i].imageURL === currentPoster.imageURL) && (savedPosters[i].title === currentPoster.title) && (savedPosters[i].quote === currentPoster.quote)) {
+      alreadyExists = true
       break
     }
   }
 
-  if (!duplicatePoster) {
+  if (!alreadyExists) {
     savedPosters.push(currentPoster)
 
     savedPostersGrid.innerHTML += `<article class="mini-poster">
@@ -352,17 +354,17 @@ function updateUnmotivationalGrid() {
 }
 
 function deleteUnmotivationalPoster(event) {
-  if (event.target.classList.contains('unmotivational')) {
-    
+  if (event.target.classList.contains('unmotivational')) {  
+
     removePosterFromCleanedData(event.target.children[1])
-    event.target.classList.add('hidden')
 
   } else if (event.target.parentElement.classList.contains('unmotivational')) {
 
     removePosterFromCleanedData(event.target)
-    event.target.parentElement.classList.add('hidden')
-
+    
   }
+  unmotivationalGrid.innerHTML = ""
+  updateUnmotivationalGrid()
 }
 
 function removePosterFromCleanedData(element) {
@@ -377,44 +379,6 @@ function removePosterFromCleanedData(element) {
   })
   
   cleanedUnmotivationalPosters.splice(posterIndex, 1)
-}
-
-function showSaved() {
-  savedSection.classList.remove('hidden')
-  mainSection.classList.add('hidden')
-}
-
-function showForm() {
-  formSection.classList.remove('hidden')
-  mainSection.classList.add('hidden')
-}
-
-function showMain() {
-  formSection.classList.add('hidden')
-  mainSection.classList.remove('hidden')
-}
-
-function backToMain() {
-  savedSection.classList.add('hidden')
-  mainSection.classList.remove('hidden')
-}
-
-function showUnmotivational() {
-  mainSection.classList.add('hidden')
-  unmotivationalSection.classList.remove('hidden')
-}
-
-function returnToMain() {
-  unmotivationalSection.classList.add('hidden')
-  mainSection.classList.remove('hidden')
-}
-
-function cleanData() {
-  let cleanedPosters = []
-  unmotivationalPosters.forEach((poster) => {
-    cleanedPosters.push(createPoster(poster.img_url, poster.name, poster.description));
-  })
-  return cleanedPosters
 }
 
 updateMainPoster()
