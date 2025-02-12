@@ -249,6 +249,7 @@ var savedPosters = [];
 var currentPoster;
 
 
+mainSection.addEventListener('click', updateMainPosterSubElement)
 showSavedButton.addEventListener('click', (event) => {changeSections(mainSection, savedSection)})
 showFormButton.addEventListener('click', (event) => {changeSections(mainSection, formSection)})
 unmotivationalButton.addEventListener('click', (event) => {changeSections(mainSection, unmotivationalSection)})
@@ -320,6 +321,21 @@ function updateMainPoster() {
   mainPosterQuote.textContent = randomPoster.quote
 
   currentPoster = randomPoster
+}
+
+function updateMainPosterSubElement(event) {
+  if (event.target.parentElement.classList.contains('poster')) {
+
+    if (event.target.classList.contains('poster-img')) {
+      event.target.src = images[getRandomIndex(images)]
+
+    } else if (event.target.classList.contains('poster-title')) {
+      event.target.textContent = titles[getRandomIndex(titles)]
+
+    } else if (event.target.classList.contains('poster-quote')) {
+      event.target.textContent = quotes[getRandomIndex(quotes)]
+    }
+  }
 }
 
 function savePoster() {
