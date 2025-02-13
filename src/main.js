@@ -295,8 +295,8 @@ function createFormPoster(event) {
   currentPoster = createPoster(formPosterURL.value, formPosterTitle.value, formPosterQuote.value)
   
   if (!(images.includes(formPosterURL.value))) {images.push(formPosterURL.value)}
-  if (!(titles.includes(formPosterTitle.value))) {images.push(formPosterTitle.value)}
-  if (!(quotes.includes(formPosterQuote.value))) {images.push(formPosterQuote.value)}
+  if (!(titles.includes(formPosterTitle.value))) {titles.push(formPosterTitle.value)}
+  if (!(quotes.includes(formPosterQuote.value))) {quotes.push(formPosterQuote.value)}
   
   changeSections(formSection, mainSection)
 
